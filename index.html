@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css\bootstrap.css">
+<link href="css\carousel.css" rel="stylesheet">
+<link href="css\bootstrap.min.css" rel="stylesheet">
 <style id="Sorting">
   .hidden{
     display: none;
@@ -46,12 +48,26 @@
 
     <div class="album py-5 bg-light">
       <div class="container">
+          <div class="Shadows project hidden">
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+              <div class="my-3 p-3">
+                <h2 class="display-5">Shadows Below</h2>
+                <p class="lead">https://linkthesm.itch.io/the-shadows-below</p>
+                <p class="lead">Shadows Bewlow was completed durring a 48 hour Game Jam with the Theme of Light and Shadow.
+                  The game is a stage based top down shooter. The goal is to gather Light balls and place them on the shadow spawners while fighting off shadow creatures.
+                  Once all the shadow spawners in the stage have been destroyed the path to the next stage opens. Each stage deeper the player goes the darker the stage gets.
+                  I used some assets form the Unity asset store to add some polish to the projcet.</p>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="container">
         <h2>The Portfolio</h2>
         <p>Here are just some examples of what I have done Working with PartyUp Games and on my own for game jams and professional development.</p>
         <div class="btn-group">
-          <button onclick="Sort();" type="button" class="btn btn-primary">Games</button>
-          <button onclick="Show();"type="button" class="btn btn-primary">3D</button>
-          <button type="button" class="btn btn-primary">Sony</button>
+          <button onclick="Show();"type="button" class="btn btn-primary">Show All</button>
+          <button onclick="Sort('Games');" type="button" class="btn btn-primary">Games</button>
+          <button onclick="Sort('Jam');" type="button" class="btn btn-primary">Jams</button>
         </div>
     </div>
       <div class="container">
@@ -59,14 +75,13 @@
         <div class="row">
 
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm sortable Jam ">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card mb-4 shadow-sm sortable Jam Games ">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="Images\ShadowsBelowThumb.png">
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">Shadows Below</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    <button onclick="ShowProject('Shadows');" type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   </div>
                   <small class="text-muted">9 mins</small>
                 </div>
@@ -75,10 +90,10 @@
           </div>
 
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm sortable Jam Unity">
+            <div class="card mb-4 shadow-sm sortable Games">
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">Flella: Escape the Hat Tree</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -111,18 +126,24 @@
 
 
 </body>
+
 <script type="text/javascript">
- function Sort(){
+
+ function Sort(a){
    // hide
     var sortable = document.getElementsByClassName("sortable");
     for (var i = 0; i < sortable.length; i++) {
       sortable[i].classList.add("hidden");
     }
-    var allOrangeJuiceQuery = document.querySelectorAll('.Jam');
+    var sortable = document.getElementsByClassName("project");
+    for (var i = 0; i < sortable.length; i++) {
+      sortable[i].classList.add("hidden");
+    }
+    var allOrangeJuiceQuery = document.querySelectorAll("."+a);
      for (var i=0, len=allOrangeJuiceQuery.length|0; i<len; i=i+1|0) {
            var a = Array.from(allOrangeJuiceQuery[i].classList);
            allOrangeJuiceQuery[i].classList.remove("hidden");
-      if(  a.includes("sortable")){
+      if(a.includes("sortable")){
            console.log("Sortable");
       }
      }
@@ -132,7 +153,27 @@
    for (var i = 0; i < sortable.length; i++) {
      sortable[i].classList.remove("hidden");
    }
+   var sortable = document.getElementsByClassName("project");
+   for (var i = 0; i < sortable.length; i++) {
+     sortable[i].classList.add("hidden");
+   }
  }
+ function ShowProject(a){
+   // hide
+    var sortable = document.getElementsByClassName("project");
+    for (var i = 0; i < sortable.length; i++) {
+      sortable[i].classList.add("hidden");
+    }
+    var allOrangeJuiceQuery = document.querySelectorAll("."+a);
+     for (var i=0, len=allOrangeJuiceQuery.length|0; i<len; i=i+1|0) {
+           var a = Array.from(allOrangeJuiceQuery[i].classList);
+           allOrangeJuiceQuery[i].classList.remove("hidden");
+      if(a.includes("sortable")){
+           console.log("Sortable");
+      }
+     }
+ }
+
 
 </script>
 </html>
